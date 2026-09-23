@@ -1,1 +1,109 @@
 @import "tailwindcss";
+
+@theme {
+  --color-harbor-bg: var(--harbor-bg, #0a0e17);
+  --color-harbor-surface: var(--harbor-surface, #111827);
+  --color-harbor-surface-2: var(--harbor-surface-2, #1a2235);
+  --color-harbor-border: var(--harbor-border, #1e293b);
+  --color-harbor-accent: var(--harbor-accent, #3b82f6);
+  --color-harbor-accent-hover: var(--harbor-accent-hover, #2563eb);
+  --color-harbor-text: var(--harbor-text, #f1f5f9);
+  --color-harbor-text-muted: var(--harbor-text-muted, #94a3b8);
+  --color-harbor-danger: var(--harbor-danger, #ef4444);
+  --color-harbor-success: var(--harbor-success, #22c55e);
+  --color-harbor-warning: var(--harbor-warning, #f59e0b);
+}
+
+:root {
+  --harbor-bg: #0a0e17;
+  --harbor-surface: #111827;
+  --harbor-surface-2: #1a2235;
+  --harbor-border: #1e293b;
+  --harbor-accent: #3b82f6;
+  --harbor-accent-hover: #2563eb;
+  --harbor-text: #f1f5f9;
+  --harbor-text-muted: #94a3b8;
+  --harbor-danger: #ef4444;
+  --harbor-success: #22c55e;
+  --harbor-warning: #f59e0b;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--harbor-border) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--harbor-border);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--harbor-text-muted);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  background: var(--harbor-bg);
+  color: var(--harbor-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.rail-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.rail-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.glass {
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--harbor-accent), #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
